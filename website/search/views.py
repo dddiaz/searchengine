@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from search.pickleindex import *
 
 # Create your views here.
 def index(request):
@@ -10,6 +11,7 @@ def index(request):
 def search(request):
     if 'q' in request.GET:
         message = 'You searched for: %r' % request.GET['q']
+        message += " TermID: " + term_id_from_term(request.GET['q']) #ingrain
     else:
         message = 'You submitted an empty search.'
     return HttpResponse(message)
