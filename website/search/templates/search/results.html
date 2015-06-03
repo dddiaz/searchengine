@@ -2,16 +2,15 @@
     <body>
         <h1>Results</h1>
         {% if results %}
+        <h2>You Searched For: {{results.search_phrase}}</h2>
         <ul>
-        {% for key,value in results.items %}
-            <li>{{key}} - {{value}}</li>
-        {% endfor %}
+            {% for rank_site, site in results.websites.items %}
+                <!---<li>{{rank_site}} : {{site}}</li>--->
+                <li>{{rank_site}} : <a href="{{site}}">{{site}}</a></li>
+            {% endfor %}
         </ul>
         {% else %}
         <p>No results are available.</p>
         {% endif %}
     </body>
 </html>
-
-
-<!--<li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>-->
