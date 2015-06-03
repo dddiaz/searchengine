@@ -12,9 +12,12 @@ class SearchResults:
         self.termid1 = None
         self.termid2 = None
         self.search_size = 0
-        self.term2termid = pickle.load( open( "/Users/danieldiaz/Desktop/PickleFiles/term2termID.pk", "rb" ) )
-        self.term2tfidf = pickle.load(open("/Users/danieldiaz/Desktop/PickleFiles/term2TFIDF.pk","rb"))
-        self.docid2url = pickle.load(open("/Users/danieldiaz/Desktop/PickleFiles/docID2URL.pk","rb"))
+        #self.term2termid = pickle.load( open( "/Users/danieldiaz/Desktop/PickleFiles/term2termID.pk", "rb" ) )
+        #self.term2tfidf = pickle.load(open("/Users/danieldiaz/Desktop/PickleFiles/term2TFIDF.pk","rb"))
+        #self.docid2url = pickle.load(open("/Users/danieldiaz/Desktop/PickleFiles/docID2URL.pk","rb"))
+        self.term2termid = pickle.load( open( "/Users/danieldiaz/Dev/school/cs121/searchengine/PickleFiles/term2termID.pk", "rb" ) )
+        self.term2tfidf = pickle.load(open("/Users/danieldiaz/Dev/school/cs121/searchengine/PickleFiles/term2TFIDF.pk","rb"))
+        self.docid2url = pickle.load(open("/Users/danieldiaz/Dev/school/cs121/searchengine/PickleFiles/docID2URL.pk","rb"))
         self.websiteresultsDict = None
         self.sorted_docs1 = None
         self.websiteresultsDict1 = None
