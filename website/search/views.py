@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from search.pickleindex import *
+from django.template import Context, Template
 
 # Create your views here.
 def index(request):
@@ -10,19 +11,13 @@ def index(request):
 #http://www.djangobook.com/en/2.0/chapter07.html
 def search(request):
     if 'q' in request.GET:
-        message = 'You searched for: %r' % request.GET['q']
-        message += " TermID: " + term_id_from_term(request.GET['q']) #ingrain
+        search_phrase = request.GET['q']
+        #results = return_query_results(search_phrase);
+        sr = SearchResults()
+        results = sr.calcResults(search_phrase)
+        context = {'results':results}
+        return render(request,'search/results.html', context)
     else:
         message = 'You submitted an empty search.'
-    return HttpResponse(message)
+        return HttpResponse(message)
 
-# from mysite.books.models import Book
-#
-# def search(request):
-#     if 'q' in request.GET and request.GET['q']:
-#         q = request.GET['q']
-#         books = Book.objects.filter(title__icontains=q)
-#         return render(request, 'search_results.html',
-#             {'books': books, 'query': q})
-#     else:
-#         return HttpResponse('Please submit a search term.')
